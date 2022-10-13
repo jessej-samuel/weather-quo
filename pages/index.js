@@ -9,7 +9,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [location, setLocation] = useState({ lat: 0, lon: 0 });
   const [isCelsius, setIsCelsius] = useState(true);
-  const [askLocPerms, setAskLocPerms] = useState(false);
   const [data, setData] = useState(null);
   const [time, setTime] = useState(new Date());
 
@@ -30,7 +29,7 @@ export default function Home() {
     });
     setLoading(false);
     console.log("Getting coordinates...");
-  }, [askLocPerms]);
+  }, []);
 
   useEffect(() => {
     console.log("Fetching data...");
@@ -45,7 +44,7 @@ export default function Home() {
   return (
     <>
       {/* // <div className="max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl min-h-screen mx-auto"></div> */}
-      {askLocPerms && data && !loading ? (
+      {data && !loading ? (
         <div>
           <Head>
             <title>Weather Quo</title>

@@ -10,11 +10,11 @@ export default function Home() {
   const [location, setLocation] = useState({ lat: 0, lon: 0 });
   const [isCelsius, setIsCelsius] = useState(true);
   const [data, setData] = useState(null);
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState(new Date().toTimeString().slice(0, 5));
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime(new Date().toTimeString());
+      setTime(new Date().toTimeString().slice(0, 8));
     }, 1000);
     // return () => clearInterval(interval);
   }, []);

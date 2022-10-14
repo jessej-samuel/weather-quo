@@ -16,8 +16,19 @@ export default function Home() {
     const interval = setInterval(() => {
       setTime(new Date().toTimeString().slice(0, 8));
     }, 1000);
-    // return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
+
+  const greeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) {
+      return "Good Morning";
+    } else if (hour < 18) {
+      return "Good Afternoon";
+    } else {
+      return "Good Evening";
+    }
+  };
 
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition((position) => {
@@ -32,13 +43,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    console.log("Fetching data...");
-    Weather.get(`/current?lon=${location.lon}&lat=${location.lat}`).then(
-      (res) => {
-        setData(res.data);
-        setLoading(false);
-      }
-    );
+    const getAndSet = () => {
+      console.log("Fetching data...");
+      Weather.get(`/current?lon=${location.lon}&lat=${location.lat}`).then(
+        (res) => {
+          setData(res.data);
+          setLoading(false);
+        }
+      );
+    };
+    if (location.lat !== 0 && location.lon !== 0) {
+      getAndSet();
+    }
   }, [location]);
 
   return (
@@ -66,6 +82,7 @@ export default function Home() {
               backdropFilter: "revert",
             }}
           >
+            {console.log(data)}
             <h1 className="font-light text-3xl h-16 w-fit">
               {data ? data.name : "Loading..."}
             </h1>
@@ -92,8 +109,8 @@ export default function Home() {
                 : ""}
             </p>
             <p className="self-end place-self-end hidden md:block text-6xl absolute font-medium">
-              {/* TODO: Setup dynamic time greeting */}
-              Good morning!
+              {/* TODO: Setup dynamic time greeting for morning, afternoon and evening*/}
+              { greeting() }
             </p>
             <p className="place-self-end bottom-0 absolute font-mono">{time}</p>
           </main>

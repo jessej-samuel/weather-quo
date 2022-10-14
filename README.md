@@ -26,7 +26,8 @@ cd weather-quo
 yarn install
 yarn run dev
 ```
-Note: This project uses yarn. Running `npm install` may cause unintended side effects.
+
+> **Note** This project uses [yarn](https://yarnpkg.com/). Running `npm install` may cause unintended side effects.
 You can install yarn on your device with `npm install -g yarn`
 
 ## 🔎 Reporting bugs

@@ -1,7 +1,13 @@
 # weather-quo
 A simple weather app to get the current weather at your place.
-![image](https://user-images.githubusercontent.com/72020411/195864260-33a22679-423e-4d6d-ade7-06a38bb98307.png)
+<br />
+<div align="center">
+  
+  [Website](https://weather-quo.vercel.app/)
 
+</div>
+
+![image](https://user-images.githubusercontent.com/72020411/195864260-33a22679-423e-4d6d-ade7-06a38bb98307.png)
 
 ## 📃 Features
 - [x] Intuitive UI
